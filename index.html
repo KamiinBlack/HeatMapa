@@ -24,7 +24,7 @@
     </script>
 
     <script>
-      function initMap() {
+      /*function initMap() {
         var uluru = {lat: -25.363, lng: 131.044};
         var uluru2 = {lat: 0.100, lng: 0.100};
         var uluru3 = {lat: -69.001, lng: -131.044};
@@ -50,7 +50,25 @@
           position: uluru4,
           map: map
         });
-      }
+      }*/
+      function initMap() {
+          
+        var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+        var mapOptions = {
+        zoom: 4,
+        center: myLatlng
+            };
+          
+        var map = new google.maps.Map(document.getElementById('map'),mapOptions);
+          
+          var marker = new google.maps.Marker({
+            position: myLatlng,
+            title:"Hello World!"
+            });
+          marker.setMap(map);
+};
+      
+      
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAggPgBPkhGYVnZWSI5IYdt9fPCA2lQgCM&callback=initMap">
