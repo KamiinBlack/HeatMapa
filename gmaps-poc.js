@@ -20,7 +20,7 @@ function getRandomData () {
 }
 
 app.get('/', function(req, res){
-  res.sendfile(__dirname + '/index.html');
+  res.sendfile(__dirname + './static/index.html');
 });
 
 io.on('connection', function(socket){

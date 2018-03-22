@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        height: 500px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <script>
+      function initMap(){
+          //window.data = [{lat: -25.363, lng: 131.044, mark:1},{lat: 0.100, lng: 0.100, mark:10}, {lat: -69.001, lng: -131.044, mark: 5}, {lat: 70.303, lng: 10.001, mark: 7}]
+          window.map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 4,
+              center: window.data[0]
+          });
+      }
+      window.onload = ()=>{
+          initPoints();
+          initHeatmap();
+          var socket = io();
+          socket.on('data', (x) => {
+              heatmap.setData({
+                  max: 10,
+                  data: data
+              });
+          });
+
+      };
+  </script>
+  <body>
+    <h3>HeatMap with Pollution</h3>
+    <div id="map"></div>
+    <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/heatmap.js/2.0.2/heatmap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAggPgBPkhGYVnZWSI5IYdt9fPCA2lQgCM&callback=initMap"></script>
+    <script src="js/gmap-heatmap-plugin.js"></script>
+    <script src="js/main.js"></script>
+    <script src="../socket.io/socket.io.js"></script>
+
+  </body>
+</html>
