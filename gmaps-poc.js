@@ -25,9 +25,13 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
   console.log('User connected');
-  mock_data = [];
-  getRandomData();
-  io.emit('data', mock_data);
+  
+  setInterval(() => {
+    mock_data = [];
+    getRandomData();
+    io.emit('data', mock_data);
+  }, 1000);
+  
 });
 
 
